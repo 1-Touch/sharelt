@@ -1,0 +1,7 @@
+.pages {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 10px 40px;
+  font-size: 18px;
+  cursor: pointer;
+}

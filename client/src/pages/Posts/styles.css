@@ -1,0 +1,30 @@
+.heading {
+  width: 100%;
+  border-bottom: 2px solid grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.heading .add-icon {
+  font-size: 26px;
+  cursor: pointer;
+  color: #555;
+}
+
+.social-icon {
+  font-size: 32px;
+  color: #555;
+}
+
+.facebook {
+  color: #3b5998;
+}
+
+.instagram {
+  color: #e74b63;
+}
+
+.twitter {
+  color: #00acee;
+}
