@@ -1,5 +1,11 @@
 import React from 'react';
-import { FaHome, FaUser, FaEnvelope, FaWrench } from 'react-icons/fa';
+import {
+  FaHome,
+  FaUser,
+  FaEnvelope,
+  FaRegChartBar,
+  FaWrench,
+} from 'react-icons/fa';
 import { Link, NavLink } from 'react-router-dom';
 
 import './styles.css';
@@ -55,6 +61,16 @@ const Sidenav = () => {
               >
                 <FaEnvelope className="text-light mr-3 icon" />
                 Posts
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink
+                to="/analytics"
+                className="nav-link text-white p-3 mb-2 d-flex align-items-center sidebar-link"
+                activeClassName="current"
+              >
+                <FaRegChartBar className="text-light mr-3 icon" />
+                Analytics
               </NavLink>
             </li>
             <li className="nav-item">

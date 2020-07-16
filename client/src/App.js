@@ -12,6 +12,7 @@ import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Posts from './pages/Posts';
 import Settings from './pages/Settings';
+import Analytics from './pages/Analytics';
 
 function App() {
   const auth = useSelector((state) => state.auth);
@@ -33,6 +34,7 @@ function App() {
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/profile" component={Profile} />
               <Route exact path="/posts" component={Posts} />
+              <Route exact path="/analytics" component={Analytics} />
               <Route exact path="/settings" component={Settings} />
             </MainArea>
           </>

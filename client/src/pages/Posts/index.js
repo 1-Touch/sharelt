@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   FaUserPlus,
   FaFacebookF,
@@ -10,19 +10,20 @@ import './styles.css';
 
 // Components
 import Account from '../../components/Account';
+import Heading from '../../components/Heading';
 
 const Posts = () => {
+  const [fbCheckbox, setFbCheckbox] = useState(false);
+  const [instaCheckbox, setInstaCheckbox] = useState(false);
+  const [twitterCheckbox, setTwitterCheckbox] = useState(false);
+
   const submitHandler = (e) => {
     e.preventDefault();
   };
 
   return (
     <div className="px-4 w-100">
-      {/* Heading Area */}
-      <div className="py-2 heading">
-        <h2 className="text-primary text-uppercase">post</h2>
-        <FaUserPlus className="add-icon" />
-      </div>
+      <Heading name="post" icons={[<FaUserPlus className="add-icon" />]} />
       {/* Form */}
       <div className="px-3 py-4">
         <form onSubmit={submitHandler}>
@@ -33,6 +34,8 @@ const Posts = () => {
                 type="checkbox"
                 className="custom-control-input"
                 id="facebookSwitch"
+                checked={fbCheckbox}
+                onChange={(e) => setFbCheckbox(e.target.checked)}
               />
               <label className="custom-control-label" htmlFor="facebookSwitch">
                 <FaFacebookF className="social-icon facebook" />
@@ -43,6 +46,8 @@ const Posts = () => {
                 type="checkbox"
                 className="custom-control-input"
                 id="instaSwitch"
+                checked={instaCheckbox}
+                onChange={(e) => setInstaCheckbox(e.target.checked)}
               />
               <label className="custom-control-label" htmlFor="instaSwitch">
                 <FaInstagram className="social-icon instagram" />
@@ -53,6 +58,8 @@ const Posts = () => {
                 type="checkbox"
                 className="custom-control-input"
                 id="twitterSwitch"
+                checked={twitterCheckbox}
+                onChange={(e) => setTwitterCheckbox(e.target.checked)}
               />
               <label className="custom-control-label" htmlFor="twitterSwitch">
                 <FaTwitter className="social-icon twitter" />
@@ -67,6 +74,19 @@ const Posts = () => {
                 Upload Media
               </label>
               {/* File choice */}
+              <div className="custom-control custom-radio custom-control-inline">
+                <input
+                  type="radio"
+                  id="textRadio"
+                  name="radioToggler"
+                  className="custom-control-input"
+                  value="text"
+                  defaultChecked={true}
+                />
+                <label className="custom-control-label" htmlFor="textRadio">
+                  Text
+                </label>
+              </div>
               <div className="custom-control custom-radio custom-control-inline">
                 <input
                   type="radio"
@@ -116,11 +136,17 @@ const Posts = () => {
           </div>
 
           {/* Account Pages */}
-          <div className="card p-5 mt-3">
-            <h5 className="text-primary text-center pb-2">Accounts</h5>
-            <Account icon="facebook" name="Love is Life" />
-            <Account icon="facebook" name="Hugs or Drugs" />
-          </div>
+          {(fbCheckbox || instaCheckbox || twitterCheckbox) && (
+            <div className="card p-5 mt-3">
+              <h5 className="text-primary text-center pb-2">Accounts</h5>
+              {fbCheckbox && <Account icon="facebook" name="Love is Life" />}
+              {fbCheckbox && <Account icon="facebook" name="Hugs or Drugs" />}
+              {instaCheckbox && (
+                <Account icon="instagram" name="Deadline Dork" />
+              )}
+              {twitterCheckbox && <Account icon="twitter" name="Dead Dork" />}
+            </div>
+          )}
         </form>
       </div>
     </div>

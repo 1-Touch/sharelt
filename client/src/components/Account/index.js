@@ -1,22 +1,41 @@
-import React from 'react';
-import { FaFacebook, FaCheck } from 'react-icons/fa';
-import { AiFillInstagram } from 'react-icons/ai';
+import React, { useState } from 'react';
+import { FaFacebook } from 'react-icons/fa';
+import { FiInstagram, FiTwitter } from 'react-icons/fi';
+import { BsCheckCircle } from 'react-icons/bs';
 
 import './styles.css';
 
 const Account = (props) => {
+  const [isSelected, setIsSelected] = useState(true);
+
   const { icon, name } = props;
+
+  const socialIcon = (icon) => {
+    if (icon === 'facebook') {
+      return <FaFacebook className="social-icon facebook mr-3" />;
+    } else if (icon === 'instagram') {
+      return <FiInstagram className="social-icon instagram mr-3" />;
+    } else if (icon === 'twitter') {
+      return <FiTwitter className="social-icon twitter mr-3" />;
+    }
+  };
+
+  const selectHandler = (name) => {
+    console.log(name);
+    setIsSelected(!isSelected);
+  };
+
   return (
-    <div className="pages mb-2">
+    <div className="pages mb-2" onClick={() => selectHandler(name)}>
       <div className="d-flex align-items-center justify-content-between">
         <div>
-          {icon === 'facebook' && (
-            <FaFacebook className="social-icon facebook mr-3" />
-          )}
+          {socialIcon(icon)}
           {name}
         </div>
         <>
-          <FaCheck style={{ color: 'green', fontSize: '26px' }} />
+          {isSelected && (
+            <BsCheckCircle style={{ color: 'green', fontSize: '26px' }} />
+          )}
         </>
       </div>
     </div>
