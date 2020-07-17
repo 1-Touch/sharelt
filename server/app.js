@@ -12,7 +12,7 @@ app.use(express.json());
 
 // Routes
 app.get('/', (req, res) => res.send('in app'));
-// app.use('/facebook', require('./routes/facebook'));
+app.use('/facebook', require('./routes/facebook/pages'));
 
 // PORT
 const PORT = 5000 || process.env.PORT;
