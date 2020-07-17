@@ -13,6 +13,7 @@ app.use(express.json());
 // Routes
 app.get('/', (req, res) => res.send('in app'));
 app.use('/facebook', require('./routes/facebook/pages'));
+app.use('/insta-scraper', require('./routes/scrapers/insta-scraper'));
 
 // PORT
 const PORT = 5000 || process.env.PORT;
