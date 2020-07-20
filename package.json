@@ -1,0 +1,38 @@
+{
+  "name": "sharelt",
+  "version": "1.0.0",
+  "description": "Social Media Management Tool",
+  "scripts": {
+    "client": "npm start --prefix client",
+    "server": "npm start --prefix server",
+    "dev-server": "npm run start:dev --prefix server",
+    "client-packages": "npm install --prefix client",
+    "server-packages": "npm install --prefix server",
+    "sharelt-packages": "npm run client-packages & npm run server-packages",
+    "development": "npm run client & npm run dev-server",
+    "sharelt": "npm run client & npm run server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/1-Touch/sharelt.git"
+  },
+  "keywords": [
+    "social-media",
+    "social-media-management",
+    "facebook-post",
+    "social-post",
+    "instagram-post",
+    "twitter-post",
+    "social-manager"
+  ],
+  "author": "1 Touch Development Pvt Ltd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/1-Touch/sharelt/issues"
+  },
+  "homepage": "https://github.com/1-Touch/sharelt#readme",
+  "dependencies": {
+    "concurrently": "^5.2.0"
+  },
+  "devDependencies": {}
+}
