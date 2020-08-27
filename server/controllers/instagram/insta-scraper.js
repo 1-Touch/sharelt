@@ -15,7 +15,7 @@ const scrapeData = (req, res) => {
       console.log("stderr", stderr);
     }
   );
-  res.send("Data has been scraped successfully");
+  res.send({ success: true, searchTerm });
 };
 
 module.exports = { scrapeData };

@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import { FaFacebookF, FaInstagram, FaTwitter } from 'react-icons/fa';
+import React, { useState } from "react";
+import { FaFacebookF, FaInstagram, FaTwitter } from "react-icons/fa";
+import axios from "axios";
 
 // Components
-import Heading from '../../components/Heading';
-import Spinner from '../../components/Spinner';
-import LineChart from '../../components/Charts/LineChart';
+import Heading from "../../components/Heading";
+import Spinner from "../../components/Spinner";
+import LineChart from "../../components/Charts/LineChart";
 
 const Analytics = () => {
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [resultSet, setResultSet] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const searchHandler = (platform) => {
+  const searchHandler = async (platform) => {
     console.log(platform);
     console.log(searchTerm);
     setLoading(true);
@@ -19,6 +20,17 @@ const Analytics = () => {
       setResultSet(true);
       setLoading(false);
     }, 5000);
+
+    setLoading(true);
+    try {
+      const searchResult = await axios.get(
+        `http://localhost:5000/insta-scraper/${searchTerm}`
+      );
+      setLoading(false);
+      console.log(searchResult.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -39,21 +51,21 @@ const Analytics = () => {
           <button
             className="btn btn-outline-secondary"
             type="button"
-            onClick={() => searchHandler('facebook')}
+            onClick={() => searchHandler("facebook")}
           >
             <FaFacebookF className="facebook" />
           </button>
           <button
             className="btn btn-outline-secondary"
             type="button"
-            onClick={() => searchHandler('instagram')}
+            onClick={() => searchHandler("instagram")}
           >
             <FaInstagram className="instagram" />
           </button>
           <button
             className="btn btn-outline-secondary"
             type="button"
-            onClick={() => searchHandler('twitter')}
+            onClick={() => searchHandler("twitter")}
           >
             <FaTwitter className="twitter" />
           </button>
